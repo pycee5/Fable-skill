@@ -1,0 +1,11 @@
+{
+  "name": "fable",
+  "displayName": "Fable Playbook",
+  "description": "A working method for every task - plan, break into verifiable steps, check the result, report honestly - plus specialist skills for code design, architecture, UI design, debugging, verification, delegation, agent councils, token efficiency and communication.",
+  "author": {
+    "name": "pycee5",
+    "url": "https://github.com/pycee5"
+  },
+  "repository": "https://github.com/pycee5/Fable-skill",
+  "keywords": ["playbook", "planning", "verification", "code-design", "architecture", "ui-design", "debugging", "agents", "token-efficiency"]
+}
