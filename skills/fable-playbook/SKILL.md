@@ -7,7 +7,7 @@ description: The default working method for every task - how to understand the r
 
 Most tasks that go wrong do not fail for lack of ability. They fail at a few predictable moments: starting before the goal is understood, building before deciding how success will be checked, pressing on after reality contradicted the plan, and saying "done" on belief rather than evidence. This playbook is a method for handling those moments well.
 
-Follow it on every task. It tells you how much of itself a task of a given size needs. Where the user's or the project's instructions differ from it, they win. If the playbook is already in your context from earlier in the session, don't reload it; keep following it.
+Follow it on every task. It tells you how much of itself a task of a given size needs. Where the system's, the user's or the project's instructions differ from it, they win. If the playbook is already in your context from earlier in the session, don't reload it; keep following it.
 
 ## The loop
 
