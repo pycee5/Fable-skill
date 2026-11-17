@@ -1,0 +1,16 @@
+{
+  "name": "fable-skills",
+  "description": "The Fable playbook and its specialist skills: a disciplined working method for planning, building, verifying and reporting.",
+  "owner": {
+    "name": "pycee5",
+    "url": "https://github.com/pycee5"
+  },
+  "plugins": [
+    {
+      "name": "fable",
+      "source": "./",
+      "description": "Always-on working playbook plus specialist skills for code design, architecture, UI design, debugging, verification, delegation, agent councils, token efficiency and communication.",
+      "category": "productivity"
+    }
+  ]
+}
