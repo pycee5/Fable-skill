@@ -69,12 +69,35 @@ This gives the same skills and the same `SessionStart` hook, on that machine onl
 
 Copying the skills into a repository (`--project`) also works for cloud sessions on that repository, because the skills travel with the checkout.
 
+### 4. In every cloud session of an environment
+
+A cloud environment can run a setup script each time it builds a container for a new session, before Claude starts. This one fetches the repository and installs the skills together with the always-on instruction. Save it as the environment's setup script:
+
+```bash
+#!/bin/bash
+# Install the fable skills (github.com/pycee5/Fable-skill) so every session has them.
+# Any failure is skipped, so this can never stop a session from starting.
+tmp="$(mktemp -d)" || exit 0
+if timeout 30 git clone -q --depth 1 https://github.com/pycee5/Fable-skill "$tmp/fable" 2>/dev/null; then
+  HOME=/root bash "$tmp/fable/install.sh" --always-on || true
+else
+  echo "fable skills: could not fetch the repository, skipped" >&2
+fi
+rm -rf "$tmp"
+exit 0
+```
+
+It needs only public read access to this repository, and it takes about a second. New sessions get the skills as they are on the default branch at that moment.
+
+Use one route per place. Adding the plugin to an account whose environment also runs this script lists every skill twice.
+
 ## Making the playbook apply to every task
 
 A skill is loaded when its description matches the work, and `fable-playbook`'s description asks for it at the start of any task. To make that a standing instruction instead of a judgment call:
 
 - **Plugin** (routes 1 and 2): already done by the bundled `SessionStart` hook ([`hooks/`](hooks/)).
 - **Skill folders** (route 3): run `./install.sh --always-on`, which appends the lines below to `CLAUDE.md`.
+- **Environment setup script** (route 4): already done, because the script passes `--always-on`.
 - **Individual account skills**: add the lines below to the `CLAUDE.md` of each repository you work in.
 
 ```markdown
